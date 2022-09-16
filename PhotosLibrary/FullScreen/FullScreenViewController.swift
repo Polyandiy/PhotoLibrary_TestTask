@@ -15,7 +15,7 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
     var photos = [UnsplashPhoto]()
     let photoImageView: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -27,21 +27,22 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
         sv.showsVerticalScrollIndicator = false
         sv.showsHorizontalScrollIndicator = true
         sv.backgroundColor = .black
+        sv.translatesAutoresizingMaskIntoConstraints = false
         return sv
     }()
     
     //MARK: - Buttons
-    private var favouriteButton: UIBarButtonItem = {
+    private lazy var favouriteButton: UIBarButtonItem = {
         let favouriteImage = UIImage(systemName: "heart")
         return UIBarButtonItem(image: favouriteImage, style: .plain, target: self, action: #selector(favouriteButtonTapped))
     }()
     
-    private var closeButton: UIBarButtonItem = {
+    private lazy var closeButton: UIBarButtonItem = {
         let closeImage = UIImage(systemName: "chevron.backward.circle")
         return UIBarButtonItem(image: closeImage, style: .plain, target: self, action: #selector(closeButtonTapped))
     }()
     
-    private var infoButton: UIBarButtonItem = {
+    private lazy var infoButton: UIBarButtonItem = {
         let infoImage = UIImage(systemName: "info.circle")
         return UIBarButtonItem(image: infoImage, style: .plain, target: self, action: #selector(infoButtonTapped))
     }()
@@ -50,10 +51,12 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         scrollView.delegate = self
         view.addSubview(scrollView)
-        scrollView.frame = view.bounds
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         setupNavigationBar()
         //setupScrollButtons()
         setupPhotoImageView()
@@ -62,7 +65,7 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
     }
     
     //MARK: - Button settings
-    @objc func favouriteButtonTapped(){
+    @objc func favouriteButtonTapped() {
         print("like")
 //не работает
         let image = photos[selectedIndex]
@@ -97,10 +100,10 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
     
     func setupPhotoImageView() {
         scrollView.addSubview(photoImageView)
-        photoImageView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        photoImageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        photoImageView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
-        photoImageView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
+        photoImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        photoImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        photoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        photoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
     }
     
     func setupNavigationBar() {
