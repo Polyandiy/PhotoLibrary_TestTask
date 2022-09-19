@@ -25,7 +25,6 @@ class LikesCollectionViewController: UICollectionViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView.register(LikesCollectionViewCell.self, forCellWithReuseIdentifier: LikesCollectionViewCell.reuseId)
         collectionView.contentInset = UIEdgeInsets( top: 0, left: 0, bottom: 0, right: 0)
         
@@ -61,9 +60,22 @@ class LikesCollectionViewController: UICollectionViewController{
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LikesCollectionViewCell.reuseId, for: indexPath) as! LikesCollectionViewCell
+
         let unsplashPhoto = photos[indexPath.item]
         cell.unsplashPhoto = unsplashPhoto
+
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! LikesCollectionViewCell
+        guard let image = cell.myImageView.image else { return }
+        
+        let vc = FullScreenViewController()
+        vc.selectedIndex = indexPath.item
+        vc.photos = photos
+        vc.photoImageView.image = image
+        pushCVC(viewController: vc)
     }
 }
 

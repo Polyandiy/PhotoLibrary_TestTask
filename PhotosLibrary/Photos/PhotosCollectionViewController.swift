@@ -89,6 +89,7 @@ class PhotosCollectionViewController: UICollectionViewController {
         
         let vc = FullScreenViewController()
         vc.selectedIndex = indexPath.item
+        vc.indexPath = indexPath
         vc.photos = photos
         vc.photoImageView.image = image
         pushCVC(viewController: vc)

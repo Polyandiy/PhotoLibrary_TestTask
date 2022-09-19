@@ -12,6 +12,7 @@ import SDWebImage
 class FullScreenViewController: UIViewController, UIScrollViewDelegate {
     
     var selectedIndex: Int = 0
+    var indexPath: IndexPath!
     var photos = [UnsplashPhoto]()
     let photoImageView: UIImageView = {
         let image = UIImageView()
@@ -33,7 +34,7 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: - Buttons
     private lazy var favouriteButton: UIBarButtonItem = {
-        let favouriteImage = UIImage(systemName: "heart")
+        let favouriteImage = UIImage(systemName: "heart.fill")
         return UIBarButtonItem(image: favouriteImage, style: .plain, target: self, action: #selector(favouriteButtonTapped))
     }()
     
@@ -58,7 +59,6 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
         scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         setupNavigationBar()
-        //setupScrollButtons()
         setupPhotoImageView()
         setupGesture()
         loadImage()
@@ -68,12 +68,15 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
     @objc func favouriteButtonTapped() {
         let currentImage = photos[selectedIndex]
 
+        let tabbar = self.tabBarController as! MainTabBarController
+        let navVC = tabbar.viewControllers?[1] as! UINavigationController
+        let likesVC = navVC.topViewController as! LikesCollectionViewController
+        
         let alertController = UIAlertController(title: "", message: "This picture will be added to your favorites.", preferredStyle: .alert)
         let add = UIAlertAction(title: "Add", style: .default) { (action) in
-            let likeVC = LikesCollectionViewController()
-            likeVC.photos.append(currentImage)
-            self.favouriteButton.image = UIImage(systemName: "heart.fill")
-            likeVC.collectionView.reloadData()
+            
+            likesVC.photos.append(currentImage)
+            likesVC.collectionView.reloadData()
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in })
         alertController.addAction(add)
