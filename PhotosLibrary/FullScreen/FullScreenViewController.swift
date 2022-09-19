@@ -66,13 +66,12 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: - Button settings
     @objc func favouriteButtonTapped() {
-        print("like")
-//не работает
-        let image = photos[selectedIndex]
+        let currentImage = photos[selectedIndex]
+
         let alertController = UIAlertController(title: "", message: "This picture will be added to your favorites.", preferredStyle: .alert)
         let add = UIAlertAction(title: "Add", style: .default) { (action) in
             let likeVC = LikesCollectionViewController()
-            likeVC.photos.append(image)
+            likeVC.photos.append(currentImage)
             self.favouriteButton.image = UIImage(systemName: "heart.fill")
             likeVC.collectionView.reloadData()
         }
@@ -83,17 +82,20 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func closeButtonTapped() {
-//не работает
         dismissCVC()
-        print("close")
     }
-//не работает
+
     @objc func infoButtonTapped() {
-        print("info")
-        let alertController = UIAlertController(title: "Подробная информация", message: "info", preferredStyle: .alert)
-        let close = UIAlertAction(title: "Close", style: .default, handler: { _ in })
+        let currentImage = photos[selectedIndex]
+        let message = """
+Дата создания: \(currentImage.created_at)
+UserName: \(currentImage.user.username)
+Name: \(currentImage.user.name)
+"""
+        let alertController = UIAlertController(title: "Подробная информация", message: "\(message)", preferredStyle: .actionSheet)
+        let close = UIAlertAction(title: "Close", style: .cancel, handler: { _ in })
         alertController.addAction(close)
-        alertController.present(alertController, animated: true)
+        present(alertController, animated: true)
     }
     
     //MARK: - Setup UI Elements
@@ -112,7 +114,7 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
     }
     
     //MARK: - setupGesture
-//НЕ РАБОТАЕТ
+    
     func setupGesture() {
         let rigthSwipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeFrom(recognizer:)))
         let leftSwipe: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeFrom(recognizer:)))
@@ -141,7 +143,7 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
     }
     
     //MARK: - loadImage
-//Добавить функцию
+    
     private func loadImage() {
         let photoURL = photos[selectedIndex].urls["regular"]
         guard let imageURL = photoURL, let url = URL(string: imageURL) else {return}
