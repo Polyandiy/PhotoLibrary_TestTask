@@ -33,8 +33,8 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
     }()
     
     //MARK: - Buttons
-    private lazy var favouriteButton: UIBarButtonItem = {
-        let favouriteImage = UIImage(systemName: "heart.fill")
+    lazy var favouriteButton: UIBarButtonItem = {
+        let favouriteImage = UIImage(systemName: "heart")
         return UIBarButtonItem(image: favouriteImage, style: .plain, target: self, action: #selector(favouriteButtonTapped))
     }()
     
@@ -70,13 +70,14 @@ class FullScreenViewController: UIViewController, UIScrollViewDelegate {
 
         let tabbar = self.tabBarController as! MainTabBarController
         let navVC = tabbar.viewControllers?[1] as! UINavigationController
-        let likesVC = navVC.topViewController as! LikesCollectionViewController
+        let likesVC = navVC.topViewController as! LikesViewController
         
         let alertController = UIAlertController(title: "", message: "This picture will be added to your favorites.", preferredStyle: .alert)
         let add = UIAlertAction(title: "Add", style: .default) { (action) in
             
+            self.favouriteButton.image = UIImage(systemName: "heart.fill")
             likesVC.photos.append(currentImage)
-            likesVC.collectionView.reloadData()
+            likesVC.tableView.reloadData()
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in })
         alertController.addAction(add)

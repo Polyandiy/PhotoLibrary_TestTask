@@ -16,7 +16,7 @@ class MainTabBarController: UITabBarController {
         view.backgroundColor = .gray
         
         let photosVC = PhotosCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        let likesVC = LikesCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let likesVC = LikesViewController()
         
         let imageOne = UIImage(systemName: "photo")
         let imageTwo = UIImage(systemName: "heart.fill")

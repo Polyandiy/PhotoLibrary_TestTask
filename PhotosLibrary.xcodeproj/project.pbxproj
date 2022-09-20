@@ -18,8 +18,8 @@
 		CE1C4ACD28CCC05D00ACD672 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C4ACC28CCC05D00ACD672 /* SearchResults.swift */; };
 		CE1C4AD028CCC32E00ACD672 /* NetworkDataFether.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C4ACF28CCC32E00ACD672 /* NetworkDataFether.swift */; };
 		CE1C4AD228CCCFAA00ACD672 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1C4AD128CCCFAA00ACD672 /* PhotoCell.swift */; };
-		CE85F1E128CF52D100050336 /* LikesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85F1E028CF52D100050336 /* LikesCollectionViewController.swift */; };
-		CE85F1E328CF532700050336 /* LikesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85F1E228CF532700050336 /* LikesCollectionViewCell.swift */; };
+		CE85F1E128CF52D100050336 /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85F1E028CF52D100050336 /* LikesViewController.swift */; };
+		CE85F1E328CF532700050336 /* LikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85F1E228CF532700050336 /* LikesTableViewCell.swift */; };
 		CE85F1E528D0542200050336 /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE85F1E428D0542200050336 /* FullScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,8 +38,8 @@
 		CE1C4ACC28CCC05D00ACD672 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		CE1C4ACF28CCC32E00ACD672 /* NetworkDataFether.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFether.swift; sourceTree = "<group>"; };
 		CE1C4AD128CCCFAA00ACD672 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
-		CE85F1E028CF52D100050336 /* LikesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCollectionViewController.swift; sourceTree = "<group>"; };
-		CE85F1E228CF532700050336 /* LikesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE85F1E028CF52D100050336 /* LikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
+		CE85F1E228CF532700050336 /* LikesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesTableViewCell.swift; sourceTree = "<group>"; };
 		CE85F1E428D0542200050336 /* FullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
 		E6B742A76AC06283FC672D2E /* Pods-PhotosLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotosLibrary.debug.xcconfig"; path = "Target Support Files/Pods-PhotosLibrary/Pods-PhotosLibrary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,8 +129,8 @@
 		CECC861728D2177B00477727 /* Likes */ = {
 			isa = PBXGroup;
 			children = (
-				CE85F1E028CF52D100050336 /* LikesCollectionViewController.swift */,
-				CE85F1E228CF532700050336 /* LikesCollectionViewCell.swift */,
+				CE85F1E028CF52D100050336 /* LikesViewController.swift */,
+				CE85F1E228CF532700050336 /* LikesTableViewCell.swift */,
 			);
 			path = Likes;
 			sourceTree = "<group>";
@@ -276,8 +276,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE85F1E128CF52D100050336 /* LikesCollectionViewController.swift in Sources */,
-				CE85F1E328CF532700050336 /* LikesCollectionViewCell.swift in Sources */,
+				CE85F1E128CF52D100050336 /* LikesViewController.swift in Sources */,
+				CE85F1E328CF532700050336 /* LikesTableViewCell.swift in Sources */,
 				CE1C4AD228CCCFAA00ACD672 /* PhotoCell.swift in Sources */,
 				CE1C4AB228CC84A600ACD672 /* AppDelegate.swift in Sources */,
 				CE1C4ACA28CCAAAB00ACD672 /* Network.swift in Sources */,
