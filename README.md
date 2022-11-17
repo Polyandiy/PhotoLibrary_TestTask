@@ -4,8 +4,6 @@ ___
 Тестовое задание
 ___
 
-Взято с (https://swiftapps.ru/2022/02/testovye-zadaniya-na-poziciyu-junior-ios-developer/)
-
 Стартовый экран — таббар с двумя вкладками.
 
 Ссылка на API – https://unsplash.com/documentation
