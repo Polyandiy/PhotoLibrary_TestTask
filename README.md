@@ -22,3 +22,8 @@ ___
 - Не используйте SwiftUI
 - Используйте как минимум одну стороннюю библиотеку Cocoa Pods (кроме Unsplash Photo Picker for iOS и прочие подобные для работы с Unsplash) 
 - Должен быть как минимум один Алерт
+
+---
+
+https://user-images.githubusercontent.com/109841383/202411147-6aa6c710-88eb-47f7-af89-d447d5e279e6.mp4
+
